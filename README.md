@@ -2,20 +2,20 @@
 # odoo_devdeploy
 script de bash para despliege de instancias de desarrollo odoo con docker
 
-##Requerimientos
+## Requerimientos
 + Docker
 
-##Uso
+## Uso
 + Correr el archivo deploy.sh en consola y seguir las instrucciones.
-+ Abrir la instancia de odoo mediante la url http://localhost:<puerto de escucha>
++ Abrir la instancia de odoo mediante la url http://localhost:&laquo;puerto de escucha&raquo;
 ___
 
 # odoo_devdeploy
 bash script for odoo development deploy with docker
 
-##Requirements
+## Requirements
 + Docker
 
-##Use
+## Use
 + Run the file deploy.sh in console and follow the instructions.
-+ Open the odoo instance in http://localhost:<listening port>
++ Open the odoo instance in http://localhost:&laquo;listening port&raquo;

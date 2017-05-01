@@ -4,8 +4,7 @@ PKG_OK=$(dpkg-query -W --showformat='${Status}\n' docker-ce|grep "install ok ins
 echo "Revisando instalacion de docker: $PKG_OK"
 if [ "" == "$PKG_OK" ]; then
   echo "No instalado. empezando instalacion."
-  sudo apt-get remove docker docker-engine 
-  sudo apt-get install apt-transport-https ca-certificates curl software-properties-common
+  sudo apt-get remove docker docker-engine; sudo apt-get install apt-transport-https ca-certificates curl software-properties-common
   curl -fsSL https://download.docker.com/linux/debian/gpg | sudo apt-key add -
   sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/debian $(lsb_release -cs) stable"
   sudo apt-get update

@@ -25,17 +25,21 @@ echo 'escribe la version de odoo que quieres desplegar, seguido de [ENTER] (valo
 
 read version
 
+echo 'escribe el nombre de la instancia'
+
+read name
+
 if [ $version = 8 ] || [ $version = 9 ] || [ $version = 10 ]; then
-	sudo mkdir -p /opt/odoo$version/addons /opt/odoo$version/config /opt/odoo$version/log
-	sudo chmod -R 755 /opt/odoo$version/
-	sudo chmod -R 777 /opt/odoo$version/log
+	sudo mkdir -p /opt/$name/addons /opt/$name/config /opt/$name/log
+	sudo chmod -R 755 /opt/$name/
+	sudo chmod -R 777 /opt/$name/log
 	if [ $version = 8 ] || [ $version = 9 ]; then
-		sudo cp ./openerp-server.conf /opt/odoo$version/config
+		sudo cp ./openerp-server.conf /opt/$name/config
 	else
-		sudo cp ./odoo.conf /opt/odoo$version/config
+		sudo cp ./odoo.conf /opt/$name/config
 	fi
-	docker run -d -e POSTGRES_USER=odoo -e POSTGRES_PASSWORD=odoo --name db$version postgres:9.4
-	docker run -d -v /opt/odoo$version/addons:/mnt/extra-addons -v /opt/odoo$version/log:/var/log/odoo -v /opt/odoo$version/config:/etc/odoo -p $port:8069 --name odoo$version --link db$version:db -t odoo:$version
+	docker run -d -e POSTGRES_USER=odoo -e POSTGRES_PASSWORD=odoo --name db$name postgres:9.4
+	docker run -d -v /opt/$name/addons:/mnt/extra-addons -v /opt/$name/log:/var/log/odoo -v /opt/$name/config:/etc/odoo -p $port:8069 --name $name --link db$name:db -t odoo:$version
 else
 	echo 'no existe la versión'
 fi

@@ -47,8 +47,8 @@ if [ $version = 8 ] || [ $version = 9 ] || [ $version = 10 ]; then
 	else
 		sudo cp ./odoo.conf /opt/$name/config
 	fi 
-	docker run -d -e POSTGRES_USER=odoo -e POSTGRES_PASSWORD=odoo$restart --name db$name postgres:9.4
-	docker run -d -v /opt/$name/addons:/mnt/extra-addons -v /opt/$name/log:/var/log/odoo -v /opt/$name/config:/etc/odoo -p $port:8069$restart --name $name --link db$name:db -t odoo:$version
+	sudo docker run -d -e POSTGRES_USER=odoo -e POSTGRES_PASSWORD=odoo$restart --name db$name postgres:9.4
+	sudo docker run -d -v /opt/$name/addons:/mnt/extra-addons -v /opt/$name/log:/var/log/odoo -v /opt/$name/config:/etc/odoo -p $port:8069$restart --name $name --link db$name:db -t odoo:$version
 else
 	echo 'no existe la versión'
 fi

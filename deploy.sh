@@ -24,7 +24,7 @@ echo 'indica el numero de puerto de escucha para la instancia odoo, seguido de [
 
 read port
 
-echo 'escribe la version de odoo que quieres desplegar, seguido de [ENTER] (valores permitidos:"8", "9", "10":'
+echo 'escribe la version de odoo que quieres desplegar, seguido de [ENTER] (valores permitidos:"8", "9", "10", "11":'
 
 read version
 
@@ -38,7 +38,7 @@ if [ "$resp" = "s" ]; then
 fi
 echo "auto-inicio desactivado"
 
-if [ $version = 8 ] || [ $version = 9 ] || [ $version = 10 ]; then
+if [ $version = 8 ] || [ $version = 9 ] || [ $version = 10 ] || [ $version = 11 ]; then
 	sudo mkdir -p /opt/$name/addons /opt/$name/config /opt/$name/log
 	sudo chmod -R 755 /opt/$name/
 	sudo chmod -R 777 /opt/$name/log

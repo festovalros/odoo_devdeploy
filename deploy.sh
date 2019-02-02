@@ -50,7 +50,4 @@ else
 fi 
 	sudo docker run -d -e POSTGRES_USER=odoo -e POSTGRES_PASSWORD=odoo$restart --name db$name postgres:10
 	sudo docker run -d -v /opt/$name/addons:/mnt/extra-addons -v /opt/$name/log:/var/log/odoo -v /opt/$name/config:/etc/odoo -p $port:8069$restart --name $name --link db$name:db -t odoo:$version
-else
-	echo 'no existe la versión'
-fi
 

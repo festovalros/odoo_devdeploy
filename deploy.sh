@@ -24,7 +24,7 @@ echo 'indica el numero de puerto de escucha para la instancia odoo, seguido de [
 
 read port
 
-echo 'escribe la version de odoo que quieres desplegar, seguido de [ENTER] (valores permitidos:"11", "12","13":'
+echo 'escribe la version de odoo que quieres desplegar, seguido de [ENTER] (valores permitidos:"11", "12","13","14":'
 
 read version
 
@@ -40,7 +40,7 @@ else
   echo "auto-inicio desactivado"
 fi
 
-if [ $version = 11 ] || [ $version = 12 ] || [ $version = 13 ]; then
+if [ $version = 11 ] || [ $version = 12 ] || [ $version = 13 ] || [ $version = 14 ]; then
 	sudo mkdir -p /opt/$name/addons /opt/$name/config /opt/$name/log
 	sudo chmod -R 755 /opt/$name/
 	sudo chmod -R 777 /opt/$name/log
@@ -48,6 +48,6 @@ if [ $version = 11 ] || [ $version = 12 ] || [ $version = 13 ]; then
 else
 	echo "version no valida"
 fi
-	sudo docker run -d -e POSTGRES_USER=odoo -e POSTGRES_DB=postgres -e POSTGRES_PASSWORD=odoo$restart --name db$name postgres:10
+	sudo docker run -d -e POSTGRES_USER=odoo -e POSTGRES_DB=postgres -e POSTGRES_PASSWORD=odoo$restart --name db$name postgres:13
 	sudo docker run -d -v /opt/$name/addons:/mnt/extra-addons -v /opt/$name/log:/var/log/odoo -v /opt/$name/config:/etc/odoo -p $port:8069$restart --name $name --link db$name:db -t odoo:$version
 

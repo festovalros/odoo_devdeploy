@@ -40,7 +40,7 @@ else
   echo "auto-inicio desactivado"
 fi
 
-if [ $version = 11 ] || [ $version = 12 ] || [ $version = 13 ] || [ $version = 14 ]| [$version = 15]; then
+if [ $version = 11 ] || [ $version = 12 ] || [ $version = 13 ] || [ $version = 14 ]|| [$version = 15]; then
 	sudo mkdir -p /opt/$name/addons /opt/$name/config /opt/$name/log
 	sudo chmod -R 755 /opt/$name/
 	sudo chmod -R 777 /opt/$name/log
